@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lint:scss": "stylelint ./src/**/*.{vue,scss} --fix"
   },
   "dependencies": {
     "core-js": "3.6.4",
@@ -46,5 +47,20 @@
     "stylelint-order": "4.0.0",
     "stylelint-scss": "3.14.2",
     "stylelint-webpack-plugin": "1.2.3"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "npm run lint",
+      "git add"
+    ],
+    "*.vue": [
+      "npm run lint",
+      "npm run lint:scss",
+      "git add"
+    ],
+    "*.scss": [
+      "npm run lint:scss",
+      "git add"
+    ]
   }
 }
