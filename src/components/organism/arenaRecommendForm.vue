@@ -5,26 +5,41 @@
       このファイルのtodo・選択結果を表示して、レコメンドを設定する。このアプリの主要部分
     </p>
     <p>相手のチーム編成</p>
-    <teamCompositionList />
+    <TeamCompositionList />
     <p>チーム編成のおすすめ</p>
-    <teamCompositionList />
+    <TeamCompositionList />
     <h2>全キャラクターリスト</h2>
     <p>
       構成 @param：全てのキャラクターリスト @return 選択された値のリスト
     </p>
-    <characterPositionList />
+    <CharacterPositionList :characterInfoList="characterInfoList" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
-import teamCompositionList from "@/components/molecule/teamCompositionList.vue";
-import characterPositionList from "@/components/organism/characterPositionList.vue";
+import { defineComponent, reactive, toRefs } from "@vue/composition-api";
+import TeamCompositionList from "@/components/molecule/TeamCompositionList.vue";
+import CharacterPositionList from "@/components/organism/CharacterPositionList.vue";
+
+// todo ここでキャラクター情報を読み込む
+import { CharacterInfo } from "@/model/characterInfo.model";
+import characterInfoListData from "@/assets/json/characterInfo.json";
+// todo ここで学習結果も読み込むかも上のレイヤーの方がいいかも
 
 export default defineComponent({
   components: {
-    teamCompositionList: teamCompositionList,
-    characterPositionList: characterPositionList
+    TeamCompositionList: TeamCompositionList,
+    CharacterPositionList: CharacterPositionList
+  },
+  setup() {
+    const state = reactive({
+      characterInfoList: characterInfoListData as CharacterInfo[] | null //いい感じに型変換できたらいいねcharacterInfo[]
+      //computed を用いるならここに定義して、インポートもしておく
+    });
+
+    return {
+      ...toRefs(state)
+    };
   }
 });
 </script>

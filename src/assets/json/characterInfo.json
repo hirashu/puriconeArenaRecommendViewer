@@ -1,0 +1,34 @@
+[
+  {
+    "id" : "001",
+    "name": "aoi",
+    "image": "001_aoi.png",
+    "position": 3,
+    "config": 950,
+    "features":[0,1,0]
+  },
+  {
+    "id" : "002",
+    "name": "aoi",
+    "image": "001_aoi.png",
+    "position": 3,
+    "config": 960,
+    "features":[0,0.1,0]
+  },
+  {
+    "id" : "001",
+    "name": "aoi",
+    "image": "001_aoi.png",
+    "position": 1,
+    "config": 160,
+    "features":[0,1,0]
+  },
+  {
+    "id" : "001",
+    "name": "aoi",
+    "image": "001_aoi.png",
+    "position": 2,
+    "config": 560,
+    "features":[0,1,0]
+  }
+]

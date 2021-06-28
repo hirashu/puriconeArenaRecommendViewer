@@ -2,17 +2,17 @@
   <div class="home">
     <h1>テンプレート</h1>
     <p>コンテンツにヘッダーやフッターを設定してね</p>
-    <arenaRecommendForm />
+    <ArenaRecommendForm />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import arenaRecommendForm from "@/components/organism/arenaRecommendForm.vue";
+import ArenaRecommendForm from "@/components/organism/ArenaRecommendForm.vue";
 
 export default defineComponent({
   components: {
-    arenaRecommendForm: arenaRecommendForm
+    ArenaRecommendForm: ArenaRecommendForm
   }
 });
 </script>
