@@ -12,14 +12,14 @@
     <p>
       構成 @param：全てのキャラクターリスト @return 選択された値のリスト
     </p>
-    <CharacterPositionList :characterInfoList="characterInfoList" />
+    <CharacterPositionForm :characterInfoList="characterInfoList" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "@vue/composition-api";
 import TeamCompositionList from "@/components/molecule/TeamCompositionList.vue";
-import CharacterPositionList from "@/components/organism/CharacterPositionList.vue";
+import CharacterPositionForm from "@/components/organism/CharacterPositionForm.vue";
 
 // todo ここでキャラクター情報を読み込む
 import { CharacterInfo } from "@/model/characterInfo.model";
@@ -29,7 +29,7 @@ import characterInfoListData from "@/assets/json/characterInfo.json";
 export default defineComponent({
   components: {
     TeamCompositionList: TeamCompositionList,
-    CharacterPositionList: CharacterPositionList
+    CharacterPositionForm: CharacterPositionForm
   },
   setup() {
     const state = reactive({

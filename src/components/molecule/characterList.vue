@@ -1,9 +1,7 @@
 <template>
   <div class="chara-list">
-    <h1>キャラクターリスト</h1>
     <p>class名って何ケースで記入するのが正解だったけ？</p>
-    <p>残：画像を表示する</p>
-    <p>{{ positonCharacterList }}</p>
+    <p>リストの幅は可変にして、左寄せにする</p>
     <v-row no-gutters style="height: 30px;">
       <v-col v-for="character in positonCharacterList" :key="character.id">
         <v-card class="pa-2" outlined tile>
@@ -39,3 +37,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+.chara-list {
+  margin: 100px;
+}
+</style>
