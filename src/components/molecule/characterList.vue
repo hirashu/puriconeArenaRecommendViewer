@@ -1,11 +1,16 @@
 <template>
   <div class="chara-list">
-    <p>class名って何ケースで記入するのが正解だったけ？</p>
-    <p>リストの幅は可変にして、左寄せにする</p>
-    <v-row no-gutters style="height: 30px;">
-      <v-col v-for="character in positonCharacterList" :key="character.id">
+    <v-row no-gutters align="start">
+      <v-col
+        cols="auto"
+        v-for="character in positonCharacterList"
+        :key="character.id"
+      >
         <v-card class="pa-2" outlined tile>
-          <img :src="setImage(character.image)" />
+          <img
+            :src="setImage(character.image)"
+            @click="clickCharacter(character)"
+          />
         </v-card>
       </v-col>
     </v-row>
@@ -13,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "@vue/composition-api";
+import { defineComponent, PropType, SetupContext } from "@vue/composition-api";
 import { CharacterInfo } from "@/model/characterInfo.model";
 
 export default defineComponent({
@@ -23,7 +28,7 @@ export default defineComponent({
       required: true
     }
   },
-  setup() {
+  setup(props, context: SetupContext) {
     /**
      * 画像（キャラクターアイコン）を設定する
      * param imageName アイコン画像
@@ -31,8 +36,14 @@ export default defineComponent({
     const setImage = (imageName: string) => {
       return require(`@/assets/charIcon/${imageName}`);
     };
+
+    const clickCharacter = (characterInfo: CharacterInfo) => {
+      context.emit("click-character", characterInfo);
+    };
+
     return {
-      setImage
+      setImage,
+      clickCharacter
     };
   }
 });
@@ -40,6 +51,7 @@ export default defineComponent({
 
 <style lang="scss">
 .chara-list {
-  margin: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 </style>

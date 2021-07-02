@@ -6,11 +6,20 @@
       デザインの修正：リストで文字列が埋まっているのでいい感じにやる
     </p>
     <h2>前衛</h2>
-    <CharacterList :positonCharacterList="frontCharacterList" />
+    <CharacterList
+      :positonCharacterList="frontCharacterList"
+      @click-character="setTeamCharacter($event)"
+    />
     <h2>中衛</h2>
-    <CharacterList :positonCharacterList="centerCharacterList" />
+    <CharacterList
+      :positonCharacterList="centerCharacterList"
+      @click-character="setTeamCharacter($event)"
+    />
     <h2>後衛</h2>
-    <CharacterList :positonCharacterList="backCharacterList" />
+    <CharacterList
+      :positonCharacterList="backCharacterList"
+      @click-character="setTeamCharacter($event)"
+    />
   </div>
 </template>
 
@@ -37,6 +46,7 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
+      selectCharacter: new Array<CharacterInfo>() as CharacterInfo[],
       /**
        * 前衛のキャラクターリスト
        */
@@ -73,8 +83,29 @@ export default defineComponent({
         );
       })
     });
+
+    /**
+     * チームのキャラクターを設定し、チーム情報を連携する
+     * ポジション順に昇順ソートされる
+     *
+     * param characterInfo キャラクター情報
+     */
+    const setTeamCharacter = (characterInfo: CharacterInfo) => {
+      //todo 同一キャラは削除する。find関数で探すことはできる
+      console.log(characterInfo.id);
+      if (state.selectCharacter.length <= 4) {
+        state.selectCharacter.push(characterInfo);
+        state.selectCharacter.sort(function(a, b) {
+          //昇順ソート
+          return a.position > b.position ? 1 : -1;
+        });
+        console.log(state.selectCharacter.length);
+        console.log(state.selectCharacter[0].id);
+      }
+    };
     return {
-      ...toRefs(state)
+      ...toRefs(state),
+      setTeamCharacter
     };
   }
 });

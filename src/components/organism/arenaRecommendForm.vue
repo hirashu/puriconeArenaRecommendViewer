@@ -7,7 +7,7 @@
     <p>相手のチーム編成</p>
     <TeamCompositionList />
     <p>チーム編成のおすすめ</p>
-    <TeamCompositionList />
+    <TeamCompositionList disabled />
     <h2>全キャラクターリスト</h2>
     <p>
       構成 @param：全てのキャラクターリスト @return 選択された値のリスト
