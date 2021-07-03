@@ -1,10 +1,6 @@
 <template>
   <div class="home">
     <h1>プリコネ対戦レコメンド</h1>
-    <p>Pageレイアウト、テンプレートにデータを差し込むよ</p>
-    <p>
-      このファイルのtodo ・学習データの読み込み
-    </p>
     <ArenaRecommendTemplate />
   </div>
 </template>

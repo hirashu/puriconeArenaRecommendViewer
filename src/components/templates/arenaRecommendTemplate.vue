@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <h1>テンプレート</h1>
-    <p>コンテンツにヘッダーやフッターを設定してね</p>
     <ArenaRecommendForm />
   </div>
 </template>

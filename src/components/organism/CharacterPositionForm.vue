@@ -1,10 +1,5 @@
 <template>
   <div class="home">
-    <h1>キャラクターリスト</h1>
-    <p>
-      キャラクターリストを配置順に表示する。選択された場合、選択結果をポジション順にそーとし返却する
-      デザインの修正：リストで文字列が埋まっているのでいい感じにやる
-    </p>
     <h2>前衛</h2>
     <CharacterList
       :positonCharacterList="frontCharacterList"
@@ -29,7 +24,8 @@ import {
   PropType,
   reactive,
   toRefs,
-  computed
+  computed,
+  SetupContext
 } from "@vue/composition-api";
 import CharacterList from "@/components/molecule/CharacterList.vue";
 import { CharacterInfo } from "@/model/characterInfo.model";
@@ -41,10 +37,11 @@ export default defineComponent({
   props: {
     characterInfoList: {
       type: Array as PropType<CharacterInfo[] | null>,
+      default: () => new Array<CharacterInfo>(),
       required: true
     }
   },
-  setup(props) {
+  setup(props, context: SetupContext) {
     const state = reactive({
       selectCharacter: new Array<CharacterInfo>() as CharacterInfo[],
       /**
@@ -85,23 +82,27 @@ export default defineComponent({
     });
 
     /**
-     * チームのキャラクターを設定し、チーム情報を連携する
+     * チームのキャラクター(最大５名)を設定し、チーム情報を連携する
      * ポジション順に昇順ソートされる
      *
      * param characterInfo キャラクター情報
      */
     const setTeamCharacter = (characterInfo: CharacterInfo) => {
-      //todo 同一キャラは削除する。find関数で探すことはできる
-      console.log(characterInfo.id);
-      if (state.selectCharacter.length <= 4) {
-        state.selectCharacter.push(characterInfo);
-        state.selectCharacter.sort(function(a, b) {
-          //昇順ソート
-          return a.position > b.position ? 1 : -1;
-        });
-        console.log(state.selectCharacter.length);
-        console.log(state.selectCharacter[0].id);
+      const deleteCharacterIndex = state.selectCharacter.findIndex(
+        selectCharacter => selectCharacter.id == characterInfo.id
+      );
+      if (deleteCharacterIndex >= 0) {
+        state.selectCharacter.splice(deleteCharacterIndex, 1);
+      } else {
+        if (state.selectCharacter.length <= 4) {
+          state.selectCharacter.push(characterInfo);
+          state.selectCharacter.sort(function(a, b) {
+            //昇順ソート
+            return a.config > b.config ? 1 : -1;
+          });
+        }
       }
+      context.emit("set-team-info", state.selectCharacter);
     };
     return {
       ...toRefs(state),
