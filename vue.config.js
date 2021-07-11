@@ -3,6 +3,8 @@ const StyleLintPlugin = require("stylelint-webpack-plugin");
 
 module.exports = {
   outputDir: "docs",
+  assetsDir: "./",
+  publicPath: "./",
   transpileDependencies: ["vuetify"],
   configureWebpack: {
     plugins: [
