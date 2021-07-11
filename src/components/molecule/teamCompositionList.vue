@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="homehenko">
     <v-row no-gutters align="start">
       <v-col
         cols="auto"

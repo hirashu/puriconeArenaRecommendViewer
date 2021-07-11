@@ -50,6 +50,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+//調整必須
 .chara-list {
   margin-left: 50px;
   margin-right: 50px;
