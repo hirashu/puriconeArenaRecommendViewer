@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="">
     <h2>前衛</h2>
     <CharacterList
       :positonCharacterList="frontCharacterList"
