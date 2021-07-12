@@ -4,7 +4,7 @@ const StyleLintPlugin = require("stylelint-webpack-plugin");
 module.exports = {
   outputDir: "docs",
   assetsDir: "./",
-  publicPath: "./",
+  publicPath: "/puriconeArenaRecommendViewer//",
   transpileDependencies: ["vuetify"],
   configureWebpack: {
     plugins: [
