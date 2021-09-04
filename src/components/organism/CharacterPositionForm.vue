@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="chracter-position-form">
     <h2>前衛</h2>
     <CharacterList
       :positonCharacterList="frontCharacterList"
@@ -111,3 +111,12 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+.chracter-position-form {
+  height: 600px;
+  overflow-x: scroll;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+</style>

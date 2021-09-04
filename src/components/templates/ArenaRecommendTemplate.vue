@@ -1,5 +1,6 @@
 <template>
-  <div class="">
+  <div class="bg-image">
+    <h1>プリコネ対戦レコメンド</h1>
     <ArenaRecommendForm />
   </div>
 </template>
@@ -14,3 +15,10 @@ export default defineComponent({
   }
 });
 </script>
+<style lang="scss">
+//調整必須
+.bg-image {
+  background-image: url("../../assets/bishoku.jpg");
+  background-size: contain;
+}
+</style>

@@ -1,20 +1,33 @@
 <template>
   <div class="home">
-    <h2>相手のチーム編成</h2>
-    <TeamCompositionList :teamCharacterInfoList="teamCharacterInfoList" />
-    <v-btn
-      :disabled="isSearchRecommendDisabled()"
-      @click="searchRecommendMember()"
-      >検索ボタン</v-btn
-    >
-    <v-btn>リセットボタン</v-btn>
-    <h2>チーム編成のおすすめ</h2>
-    <TeamCompositionList
-      :teamCharacterInfoList="recomendteamCharacterInfoList"
-    />
+    <div class="team-execution-form">
+      <div class="team-form">
+        <h2>相手のチーム編成</h2>
+        <TeamCompositionList :teamCharacterInfoList="teamCharacterInfoList" />
+      </div>
+      <div class="execution-form">
+        <div>
+          <v-btn
+            class="botton"
+            :disabled="isSearchRecommendDisabled()"
+            @click="searchRecommendMember()"
+            >検索ボタン</v-btn
+          >
+        </div>
+        <div>
+          <v-btn class="botton">リセットボタン</v-btn>
+        </div>
+      </div>
+      <div class="team-form">
+        <h2>チーム編成のおすすめ</h2>
+        <TeamCompositionList
+          :teamCharacterInfoList="recomendteamCharacterInfoList"
+        />
+      </div>
+    </div>
     <h2>編成キャラクター選択</h2>
-    <p>スクロールできた方がいいかも</p>
     <CharacterPositionForm
+      class="character-position-form"
       :characterInfoList="characterInfoList"
       @set-team-info="teamCharacterInfoList = $event"
     />
@@ -175,3 +188,28 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+.team-execution-form {
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1160px;
+}
+.select-recomend-form {
+  display: inline-block;
+}
+.team-form {
+  display: inline-block;
+  vertical-align: top;
+}
+.execution-form {
+  display: inline-block;
+  padding: 10px;
+  padding-top: 40px;
+}
+.botton {
+  margin: 5px;
+  width: 130px;
+}
+</style>
