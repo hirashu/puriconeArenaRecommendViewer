@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>プリコネ対戦レコメンド</h1>
     <ArenaRecommendTemplate />
   </div>
 </template>
