@@ -11,11 +11,11 @@
             class="botton"
             :disabled="isSearchRecommendDisabled()"
             @click="searchRecommendMember()"
-            >検索ボタン</v-btn
+            >検索</v-btn
           >
         </div>
         <div>
-          <v-btn class="botton" @click="clear()">リセットボタン</v-btn>
+          <v-btn class="botton" @click="clear()">リセット</v-btn>
         </div>
       </div>
       <div class="team-form">
@@ -187,7 +187,7 @@ export default defineComponent({
       //選択したキャラクターのクリア todo この要素が空になっていないので見た目のみ.上のフォームはなぜかうまくいってる??
       state.teamCharacterInfoList = Array<CharacterInfo>();
       //レコメンドのクリア
-      state.recomendteamCharacterInfoList.length = 0;
+      state.recomendteamCharacterInfoList = Array<CharacterInfo>();
     };
 
     return {
@@ -222,7 +222,9 @@ export default defineComponent({
 }
 .botton {
   margin: 5px;
-  width: 130px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 90px;
 }
 .character-position-form {
   padding-left: 50px;
