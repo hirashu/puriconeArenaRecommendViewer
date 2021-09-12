@@ -2,7 +2,7 @@
   <div class="home">
     <div class="team-execution-form">
       <div class="team-form">
-        <h2>相手のチーム編成</h2>
+        <h2 class="team-title-form opponent">相手チーム</h2>
         <TeamCompositionList :teamCharacterInfoList="teamCharacterInfoList" />
       </div>
       <div class="execution-form">
@@ -15,22 +15,24 @@
           >
         </div>
         <div>
-          <v-btn class="botton">リセットボタン</v-btn>
+          <v-btn class="botton" @click="clear()">リセットボタン</v-btn>
         </div>
       </div>
       <div class="team-form">
-        <h2>チーム編成のおすすめ</h2>
+        <h2 class="team-title-form">おすすめ編成</h2>
         <TeamCompositionList
           :teamCharacterInfoList="recomendteamCharacterInfoList"
         />
       </div>
     </div>
-    <h2>編成キャラクター選択</h2>
-    <CharacterPositionForm
-      class="character-position-form"
-      :characterInfoList="characterInfoList"
-      @set-team-info="teamCharacterInfoList = $event"
-    />
+    <div class="character-position-form">
+      <h2 class="character-select-title">セレクト</h2>
+      <h2 class="character-position-text">相手チームキャラクター</h2>
+      <CharacterPositionForm
+        :characterInfoList="characterInfoList"
+        @set-team-info="teamCharacterInfoList = $event"
+      />
+    </div>
   </div>
 </template>
 
@@ -180,10 +182,19 @@ export default defineComponent({
       state.recomendteamCharacterInfoList = attackerTearmList;
     };
 
+    const clear = () => {
+      //メンバー並びに結果のクリア
+      //選択したキャラクターのクリア todo この要素が空になっていないので見た目のみ.上のフォームはなぜかうまくいってる??
+      state.teamCharacterInfoList = Array<CharacterInfo>();
+      //レコメンドのクリア
+      state.recomendteamCharacterInfoList.length = 0;
+    };
+
     return {
       ...toRefs(state),
       isSearchRecommendDisabled,
-      searchRecommendMember
+      searchRecommendMember,
+      clear
     };
   }
 });
@@ -194,6 +205,7 @@ export default defineComponent({
   height: 150px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
   width: 1160px;
 }
 .select-recomend-form {
@@ -211,5 +223,42 @@ export default defineComponent({
 .botton {
   margin: 5px;
   width: 130px;
+}
+.character-position-form {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+}
+.character-select-title {
+  background-color: #25c95e;
+  border: solid 3px #25c95e;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  color: white;
+  display: inline-block;
+  padding-left: 10px;
+  width: fit-content;
+}
+.character-position-text {
+  border: solid 3px #25c95e;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  color: #25c95e;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 15px;
+  width: fit-content;
+}
+.team-title-form {
+  background-color: #63cafb;
+  border-radius: 5px;
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: fit-content;
+}
+.opponent {
+  background-color: #e72636;
 }
 </style>

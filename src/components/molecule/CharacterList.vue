@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="flame">
     <v-row no-gutters align="start">
       <v-col
         cols="auto"
@@ -48,3 +48,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+.flame {
+  padding: 3px;
+}
+</style>

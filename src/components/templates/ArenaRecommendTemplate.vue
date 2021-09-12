@@ -1,6 +1,8 @@
 <template>
-  <div class="bg-image">
-    <h1>プリコネ対戦レコメンド</h1>
+  <div>
+    <div class="header">
+      <h1 class="title-text">プリコネチームレコメンド</h1>
+    </div>
     <ArenaRecommendForm />
   </div>
 </template>
@@ -17,6 +19,16 @@ export default defineComponent({
 </script>
 <style lang="scss">
 //調整必須
+.header {
+  background-color: #fc778f;
+  margin-bottom: 15px;
+  padding: 3px;
+}
+.title-text {
+  color: white;
+  margin-left: 50px;
+  width: fit-content;
+}
 .bg-image {
   background-image: url("../../assets/bishoku.jpg");
   background-size: contain;

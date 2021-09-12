@@ -1,16 +1,16 @@
 <template>
   <div class="chracter-position-form">
-    <h2>前衛</h2>
+    <h2 class="position-flame avant‐garde">前衛</h2>
     <CharacterList
       :positonCharacterList="frontCharacterList"
       @click-character="setTeamCharacter($event)"
     />
-    <h2>中衛</h2>
+    <h2 class="position-flame halfback">中衛</h2>
     <CharacterList
       :positonCharacterList="centerCharacterList"
       @click-character="setTeamCharacter($event)"
     />
-    <h2>後衛</h2>
+    <h2 class="position-flame rear-guard">後衛</h2>
     <CharacterList
       :positonCharacterList="backCharacterList"
       @click-character="setTeamCharacter($event)"
@@ -104,9 +104,15 @@ export default defineComponent({
       }
       context.emit("set-team-info", state.selectCharacter);
     };
+
+    const clear = () =>{
+      // クリア処理
+      state.selectCharacter.length = 0;
+    };
     return {
       ...toRefs(state),
-      setTeamCharacter
+      setTeamCharacter,
+      clear
     };
   }
 });
@@ -116,7 +122,27 @@ export default defineComponent({
 .chracter-position-form {
   height: 600px;
   overflow-x: scroll;
-  padding-left: 50px;
-  padding-right: 50px;
+}
+.position-flame {
+  background-color: white;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: fit-content;
+}
+.avant‐garde {
+  border: solid 3px red;
+  color: red;
+  margin-top: 5px;
+}
+.halfback {
+  border: solid 3px orange;
+  color: orange;
+  margin-top: 15px;
+}
+.rear-guard {
+  border: solid 3px skyblue;
+  color: skyblue;
+  margin-top: 15px;
 }
 </style>
